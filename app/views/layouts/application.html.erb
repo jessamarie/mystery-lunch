@@ -11,6 +11,24 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <div class="user-auth">
+      <% if !current_restaurant && !current_customer %>
+        <%= link_to "Sign Up as Restaurant", new_restaurant_registration_path %>
+        <%= link_to "Sign In as Restaurant", new_restaurant_session_path %>
+        <%= link_to "Sign Up as Customer", new_customer_registration_path %>
+        <%= link_to "Sign In as Customer", new_customer_session_path %>
+      <% else %>
+        <% if current_restaurant %>
+          <%= link_to "Sign Out", destroy_restaurant_session_path, :method => :delete %>
+          <%= current_restaurant.email %>
+        <% else %>
+        <%= link_to "Sign Out", destroy_customer_session_path, :method => :delete %>
+          <%= current_customer.email %>
+        <% end %>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

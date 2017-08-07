@@ -4,5 +4,5 @@ class Restaurant < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :menu_items, dependent: :destroy
+  has_one :restaurant_profile, dependent: :destroy
 end

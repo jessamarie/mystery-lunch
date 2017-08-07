@@ -1,0 +1,7 @@
+<h1>Editing Restaurant Profile</h1>
+
+<%= render 'form', restaurant_profile: @restaurant_profile %>
+
+<%= link_to 'Show', @restaurant_profile %> |
+<%= link_to 'Back', restaurant_profiles_path %> |
+<%= link_to 'Destroy', @restaurant_profile, method: :delete, data: { confirm: 'Are you sure you want to destroy this account?' } %>

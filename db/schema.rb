@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804193049) do
+ActiveRecord::Schema.define(version: 20170807134856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customer_profiles", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "about"
+    t.string "interests"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_customer_profiles_on_customer_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "firstname", null: false
@@ -36,10 +47,10 @@ ActiveRecord::Schema.define(version: 20170804193049) do
 
   create_table "menu_items", force: :cascade do |t|
     t.string "name"
-    t.bigint "restaurant_id"
+    t.bigint "restaurant_profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["restaurant_id"], name: "index_menu_items_on_restaurant_id"
+    t.index ["restaurant_profile_id"], name: "index_menu_items_on_restaurant_profile_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -57,6 +68,16 @@ ActiveRecord::Schema.define(version: 20170804193049) do
     t.bigint "customer_id"
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
+  create_table "restaurant_profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "address"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_restaurant_profiles_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|

@@ -1,0 +1,19 @@
+<h1>Restaurant Profile</h1>
+
+<div class="restaurant-profile">
+
+    <h3 class="name"> <%= @restaurant_profile.name %> </h3>
+    <h4 class="address"> <%= @restaurant_profile.address %> </h4>
+    <h4 class="description"> <%= @restaurant_profile.description %> </h4>
+
+    <div class="menu_items">
+      <h4> Menu: </h4>
+      <% @restaurant_profile.menu_items.each do |item| %>
+        <p class="menu_item"> <%= item.name %></p>
+      <% end %>
+    </div>
+
+</div>
+
+<%= link_to 'Edit', edit_restaurant_profile_path(@restaurant_profile) %> |
+<%= link_to 'Back', restaurant_profiles_path %>

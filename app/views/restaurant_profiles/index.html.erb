@@ -1,0 +1,11 @@
+<h1>Restaurant Profiles</h1>
+
+<div class="restaurant-profile">
+
+  <% @restaurant_profiles.each do |restaurant_profile| %>
+
+    <h3 class="name"> <%= link_to restaurant_profile.name, restaurant_profile  %></h3>
+    <h4><%= restaurant_profile.description %></h4>
+  <% end %>
+
+</div>
