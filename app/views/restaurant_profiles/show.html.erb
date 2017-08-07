@@ -15,5 +15,7 @@
 
 </div>
 
+<% if current_restaurant %>
 <%= link_to 'Edit', edit_restaurant_profile_path(@restaurant_profile) %> |
+<% end %>
 <%= link_to 'Back', restaurant_profiles_path %>

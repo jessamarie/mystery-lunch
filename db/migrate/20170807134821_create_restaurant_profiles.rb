@@ -1,7 +1,7 @@
 class CreateRestaurantProfiles < ActiveRecord::Migration[5.1]
   def change
     create_table :restaurant_profiles do |t|
-      t.string :name
+      t.string :name, null:false
       t.string :description
       t.string :address
       t.references :restaurant

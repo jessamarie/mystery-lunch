@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170807134856) do
   enable_extension "plpgsql"
 
   create_table "customer_profiles", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
+    t.string "firstname", null: false
+    t.string "lastname", null: false
     t.string "about"
     t.string "interests"
     t.bigint "customer_id"
@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(version: 20170807134856) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "firstname", null: false
-    t.string "lastname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -71,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170807134856) do
   end
 
   create_table "restaurant_profiles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "description"
     t.string "address"
     t.bigint "restaurant_id"
@@ -81,7 +79,6 @@ ActiveRecord::Schema.define(version: 20170807134856) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

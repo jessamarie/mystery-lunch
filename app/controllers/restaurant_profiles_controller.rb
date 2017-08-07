@@ -25,6 +25,7 @@ class RestaurantProfilesController < ApplicationController
   # POST /restaurant_profiles.json
   def create
     @restaurant_profile = RestaurantProfile.new(restaurant_profile_params)
+    @restaurant_profile.restaurant = current_restaurant
 
     respond_to do |format|
       if @restaurant_profile.save
@@ -69,6 +70,6 @@ class RestaurantProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_profile_params
-      params.require(:menu_item).permit(:name, :address, :description)
+      params.require(:restaurant_profile).permit(:name, :address, :description)
     end
 end

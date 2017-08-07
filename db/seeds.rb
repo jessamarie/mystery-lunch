@@ -5,28 +5,25 @@ Customer.destroy_all
 Restaurant.destroy_all
 
 jessa = Customer.create(
-  firstname: "Jessa",
-  lastname: "B",
   email: "Jessa@jessa.com",
   password: "password"
 )
 
 jessas_profile = CustomerProfile.create(
-  firstname: jessa.firstname,
-  lastname: jessa.lastname,
+  firstname: "Jessa",
+  lastname: "B",
   about: "A red head",
   interests: "Chimichangas",
   customer: jessa
 )
 
 plum_blossom = Restaurant.create(
-  name: "Plum Blossom",
   email: "plum@blossom.com",
   password: "password"
 )
 
 plum_blossom_profile = RestaurantProfile.create(
-  name: plum_blossom.name,
+  name: "Plum Blossom",
   description: "A yummy chinese restaurant",
   address: "75446 plum way",
   restaurant: plum_blossom
@@ -46,13 +43,12 @@ jessas_order.order_items.create(menu_item: kung_pao, quantity: 1)
 jessas_order.order_items.create(menu_item: chao_mein)
 
 arbys = Restaurant.create(
-  name: "Arby's",
   email: "arbys@arbys.com",
   password: "password"
 )
 
 arbys_profile = RestaurantProfile.create(
-  name: arbys.name,
+  name: "Arby's",
   description: "fast food restaurant",
   address: "43342 arbys blvd",
   restaurant: arbys
@@ -73,13 +69,12 @@ chocolate_milkshake = arbys_profile.menu_items.create(
 jessas_order.order_items.create(menu_item: chocolate_milkshake)
 
 dos_amigos = Restaurant.create(
-  name: "Dos Amigos",
   email: "dos@amigos.com",
   password: "password"
 )
 
 dos_profile = RestaurantProfile.create(
-  name: dos_amigos.name,
+  name: "Dos Amigos",
   description: "A yummy mexicano restaurant",
   address: "75446 nouno amgios",
   restaurant: dos_amigos
