@@ -1,65 +1,38 @@
 class RestaurantProfilesController < ApplicationController
   before_action :set_restaurant_profile, only: [:show, :edit, :update, :destroy]
 
-  # GET /restaurant_profiles
-  # GET /restaurant_profiles.json
   def index
     @restaurant_profiles = RestaurantProfile.all
   end
 
-  # GET /restaurant_profiles/1
-  # GET /restaurant_profiles/1.json
   def show
   end
 
-  # GET /restaurant_profiles/new
   def new
     @restaurant_profile = RestaurantProfile.new
   end
 
-  # GET /restaurant_profiles/1/edit
   def edit
   end
 
-  # POST /restaurant_profiles
-  # POST /restaurant_profiles.json
   def create
-    @restaurant_profile = RestaurantProfile.new(restaurant_profile_params)
+    @restaurant_profile = RestaurantProfile.create!(restaurant_profile_params)
     @restaurant_profile.restaurant = current_restaurant
-
-    respond_to do |format|
-      if @restaurant_profile.save
-        format.html { redirect_to @restaurant_profile, notice: 'Restaurant profile was successfully created.' }
-        format.json { render :show, status: :created, location: @restaurant_profile }
-      else
-        format.html { render :new }
-        format.json { render json: @restaurant_profile.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = "Profile was successfully created."
+    redirect_to restaurant_profile_path(@restaurant_profile)
   end
 
-  # PATCH/PUT /restaurant_profiles/1
-  # PATCH/PUT /restaurant_profiles/1.json
   def update
-    respond_to do |format|
-      if @restaurant_profile.update(restaurant_profile_params)
-        format.html { redirect_to @restaurant_profile, notice: 'Restaurant profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @restaurant_profile }
-      else
-        format.html { render :edit }
-        format.json { render json: @restaurant_profile.errors, status: :unprocessable_entity }
-      end
-    end
+    @restaurant_profile.update(restaurant_profile_params)
+    flash[:notice] = "profile was updated."
+    redirect_to restaurant_profile_path(@restaurant_profile)
   end
 
-  # DELETE /restaurant_profiles/1
-  # DELETE /restaurant_profiles/1.json
   def destroy
     @restaurant_profile.destroy
-    respond_to do |format|
-      format.html { redirect_to restaurant_profiles_url, notice: 'Restaurant profile was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @restaurant_profile.restaurant.destroy
+    flash[:notice] = "user was successfully destroyed."
+    redirect_to restaurant_profiles_path
   end
 
   private

@@ -10,12 +10,18 @@
       <h4> Menu: </h4>
       <% @restaurant_profile.menu_items.each do |item| %>
         <p class="menu_item"> <%= item.name %></p>
+        <% if current_restaurant %>
+        <%= link_to 'Edit Item', edit_restaurant_profile_menu_item_path(@restaurant_profile, item) %> |
+        <% end %>
+      <% end %>
+      <% if current_restaurant %>
+        <%= link_to 'Create New Item', new_restaurant_profile_menu_item_path(@restaurant_profile) %> |
       <% end %>
     </div>
 
 </div>
 
 <% if current_restaurant %>
-<%= link_to 'Edit', edit_restaurant_profile_path(@restaurant_profile) %> |
+<%= link_to 'Edit Profile', edit_restaurant_profile_path(@restaurant_profile) %> |
 <% end %>
 <%= link_to 'Back', restaurant_profiles_path %>

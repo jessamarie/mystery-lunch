@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   root to: 'restaurant_profiles#index'
 
 
-  resources :restaurant_profiles
+  resources :restaurant_profiles do
+    resources :menu_items
+  end
 end
