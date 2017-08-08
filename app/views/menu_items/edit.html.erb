@@ -1,6 +1,7 @@
 <h1>Editing Menu Item</h1>
 
-<%= render 'form', menu_item: @menu_item %>
+<%= render 'form' %>
 
-<%= link_to 'Show', @menu_item %> |
-<%= link_to 'Back', menu_items_path %>
+<%= link_to 'Destroy', [@restaurant_profile, @menu_item], method: :delete, data: { confirm: 'Are you sure you want to destroy this item?' } %>
+
+<%= link_to 'Back', restaurant_profile_menu_items_path(@restaurant_profile) %>

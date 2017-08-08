@@ -1,5 +1,5 @@
-<%= form_with(model: menu_item, local: true) do |form| %>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= form_for [@restaurant_profile, @menu_item] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
 <% end %>
