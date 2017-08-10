@@ -1,0 +1,7 @@
+<div class="row">
+    <%= form_for order_item, remote: true do |f| %>
+      <div class="row">
+          <%= link_to "Delete", order_item, { method: :delete, remote: true, class: "button" } %>
+      </div>
+    <% end %>
+</div>

@@ -1,0 +1,29 @@
+<!-- <div class="shopping-cart">
+  <%#= render "shopping_cart" %>
+</div> -->
+
+<h1>Your Cart</h1>
+
+<table class="flex column">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Item</th>
+      <th>Restaurant</th>
+    </tr>
+  </thead>
+
+<tbody>
+    <% current_cart.cart_items.each do |item| %>
+      <tr class="flex row justify-space">
+        <td><%= link_to image_tag(item.menu_item.image_url, class: "image"), restaurant_profile_path(item.menu_item.restaurant_profile)  %></td>
+        <td><%= link_to item.menu_item.restaurant_profile.name, restaurant_profile_path(item.menu_item.restaurant_profile) %></td>
+        <td><%= link_to 'Remove', cart_item_url(item), method: :delete, class: "button" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<div class="total-price">
+  <%= link_to 'Next', new_order_path, class: "button" %>
+</div>
