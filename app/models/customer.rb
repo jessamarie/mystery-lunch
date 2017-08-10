@@ -5,5 +5,4 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders
-  has_one :customer_profile, dependent: :destroy
 end
