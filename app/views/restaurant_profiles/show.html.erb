@@ -1,30 +1,18 @@
-<h1>Restaurant Profile</h1>
+<div class="profile restaurant-profile flex row">
 
-<div class="restaurant-profile">
+    <div class="restaurant-details">
+      <h2 class="restaurant-name"> <%= @restaurant_profile.name %> </h2>
+      <p class="address"> <%= @restaurant_profile.address %> </p>
+      <p class="description"> <%= @restaurant_profile.description %> </p>
 
-    <h3 class="name"> <%= @restaurant_profile.name %> </h3>
-    <h4 class="address"> <%= @restaurant_profile.address %> </h4>
-    <h4 class="description"> <%= @restaurant_profile.description %> </h4>
-
-    <%= link_to 'Order Random Item', new_order_path(@restaurant_profile) %> |
-
-    <div class="menu_items">
-      <h4> Menu: </h4>
-      <% @restaurant_profile.menu_items.each do |item| %>
-        <p class="menu_item"> <%= item.name %></p>
-          <% if current_restaurant == @restaurant_profile.restaurant %>
-            <%= link_to 'Edit Item', edit_restaurant_profile_menu_item_path(@restaurant_profile, item) %> |
-        <% end %>
+      <% if current_customer %>
+        <%= render "order", menu_item: @menu_item, order_item: @order_item %>
       <% end %>
-      <% if current_restaurant %>
-        <%= link_to 'Create New Item', new_restaurant_profile_menu_item_path(@restaurant_profile) %> |
-      <% end %>
+
+      <%= render "links", restaurant_profile: @restaurant_profile %>
+
     </div>
 
-</div>
+    <%= render "menu", restaurant_profile: @restaurant_profile %>
 
-<% if current_restaurant == @restaurant_profile.restaurant  %>
-  <%= link_to 'New Menu Item', new_restaurant_profile_menu_item_path(@restaurant_profile) %> |
-  <%= link_to 'Edit Profile', edit_restaurant_profile_path(@restaurant_profile) %> |
-<% end %>
-<%= link_to 'Back', restaurant_profiles_path %>
+</div>

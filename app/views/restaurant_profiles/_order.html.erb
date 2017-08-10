@@ -1,0 +1,7 @@
+<div class="row">
+
+    <%= form_for menu_item, :url => cart_items_path, :html => { :method => :post } do |f|%>
+        <%= f.hidden_field :menu_item_id, value: menu_item.id %>
+        <%= f.submit 'Add to Cart', class: "button" %>
+    <% end %>
+</div>

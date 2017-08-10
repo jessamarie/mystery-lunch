@@ -4,6 +4,7 @@ class CreateRestaurantProfiles < ActiveRecord::Migration[5.1]
       t.string :name, null:false
       t.string :description
       t.string :address
+      t.string :profile_pic
       t.references :restaurant
 
       t.timestamps

@@ -6,6 +6,7 @@ class RestaurantProfilesController < ApplicationController
   end
 
   def show
+    @menu_item = @restaurant_profile.menu_items.all.sample
   end
 
   def new

@@ -1,0 +1,8 @@
+<div class="links">
+  <% if current_restaurant == restaurant_profile.restaurant  %>
+    <%= link_to 'New Menu Item', new_restaurant_profile_menu_item_path(restaurant_profile) %> |
+    <%= link_to 'Edit Profile', edit_restaurant_profile_path(restaurant_profile) %> |
+  <% end %>
+
+  <%= link_to 'Back', restaurant_profiles_path %>
+</div>

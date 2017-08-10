@@ -1,0 +1,14 @@
+<div class="menu">
+  <h3> Menu: </h3>
+  <% restaurant_profile.menu_items.each do |item| %>
+    <p class="menu-item"> <%= item.name %>: <%= item.description %></p>
+      <% if current_restaurant == restaurant_profile.restaurant %>
+        <%= link_to 'Edit Item', edit_restaurant_profile_menu_item_path(restaurant_profile, item) %> |
+    <% end %>
+  <% end %>
+
+  <% if current_restaurant %>
+    <%= link_to 'Create New Item', new_restaurant_profile_menu_item_path(restaurant_profile) %> |
+  <% end %>
+
+</div>
