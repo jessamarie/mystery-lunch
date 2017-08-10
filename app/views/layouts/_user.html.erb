@@ -1,0 +1,26 @@
+<% if current_restaurant || current_customer %>
+
+  <% if current_restaurant %>
+    <%= link_to profile.name, restaurant_profile_path(profile) %>
+    <%= link_to "Sign Out", destroy_restaurant_session_path, :method => :delete %>
+  <% else %>
+    <%= current_customer.email %>
+    <!-- <%#= link_to profile.firstname + " " + profile.lastname, customer_profile_path(profile) %> -->
+    <%= link_to "Sign Out", destroy_customer_session_path, :method => :delete %>
+  <% end %>
+
+<% else %>
+
+
+  <div class="auth">
+    Restaurant
+    <%= link_to "Sign In", new_restaurant_session_path %>/<%= link_to "Sign Up", new_restaurant_registration_path %>
+  </div>
+
+  <div class="auth">
+    Customer
+      <%= link_to "Sign In", new_customer_session_path %>/<%= link_to "Sign Up", new_customer_registration_path %>
+  </div>
+
+
+<% end %>

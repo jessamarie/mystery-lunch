@@ -1,21 +1,34 @@
 .restaurant-profiles {
-  margin: 10px;
-}
-
-.restaurant {
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
-  width: 50%;
-  background-color: white;
-  margin: 20px;
+  // justify-content: center;
 }
-.restaurant-profile {}
 
-.description {
-  margin-bottom: 30px;
+/*** CENTER ? ***/
+.restaurant {
+  width: 60%;
+  min-height: 20%;
+  margin: 10px;
+  text-align: center;
+}
+
+.restaurant-profile {
+  margin: 0 auto;
+  height: 100%;
+  padding: 10px;
+  width: 80%;
+
 }
 
 .restaurant-details {
   width: 50%;
+  margin: auto;
+}
+
+.description {
+  margin: auto auto;
+  margin-bottom: 30px;
 }
 
 .restaurant-details * {
@@ -23,7 +36,7 @@
 }
 
 .menu {
-  margin-top: 30px;
+  margin: auto;
   text-align: center;
   width: 50%;
 }

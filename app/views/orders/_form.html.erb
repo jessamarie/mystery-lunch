@@ -12,6 +12,7 @@
   </div>
   <% end %>
 
+<div class="flex column align-center">
   <%= f.label :delivery_type %>
   <%= f.select :delivery_type, Order::DELIVERY_TYPES,
                   prompt: 'Select a delivery method', class: 'form-control' %>
@@ -21,6 +22,7 @@
                   prompt: 'Select a payment method', class: 'form-control' %>
   <%= f.hidden_field :customer_id, value: current_customer.id %>
   <%= f.hidden_field :cart_id, value: current_cart.id %>
+</div>
 
   <%= f.submit yield(:button_text), class: "button" %>
 <% end %>

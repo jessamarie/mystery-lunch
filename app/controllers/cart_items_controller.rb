@@ -4,12 +4,13 @@ class CartItemsController < ApplicationController
 
   def create
     @cart.add_menu_item(params)
+    @restaurant_profile = MenuItem.find(params[:menu_item][:menu_item_id]).restaurant_profile
 
     if @cart.save
-      redirect_to cart_path
+      redirect_to restaurant_profile_path(@restaurant_profile)
     else
       flash[:alert] = "Could not add item to cart"
-      redirect_to restaurant_profiles_path
+      redirect_to restaurant_profile_path(@restaurant_profile)
     end
   end
 

@@ -6,62 +6,36 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <link href="https://fonts.googleapis.com/css?family=Roboto|Saira" rel="stylesheet">
     <%= csrf_meta_tags %>
+    <script src="https://use.fontawesome.com/42cf8c2449.js"></script>
   </head>
 
   <body class="flex column">
 
-    <div class="header flex column">
+    <div class="header justify-between flex row">
 
-      <div class="justify-between flex row">
+      <!-- <div class="border justify-between flex row"> -->
         <h1 class="title"><%= link_to "Mystery Lunch", root_path %></h1>
         <div class="user flex row">
 
-          <div class="get">AJAX GET!</div>
-
-
           <% if current_customer %>
-            <h3 class="get-cart cart-text end"><%= render 'layouts/cart_text' %></h3>
+            <h3 class="cart-text end"><%= render 'layouts/cart_text' %></h3>
           <% end %>
 
 
-          <div class="flex column justify-start">
-
-            <% if current_restaurant || current_customer %>
-
-              <% if current_restaurant %>
-                <%= link_to profile.name, restaurant_profile_path(profile) %>
-                <%= link_to "Sign Out", destroy_restaurant_session_path, :method => :delete %>
-              <% else %>
-                <!-- <%#= link_to profile.firstname + " " + profile.lastname, customer_profile_path(profile) %> -->
-                <%= link_to "Sign Out", destroy_customer_session_path, :method => :delete %>
-              <% end %>
-
-            <% else %>
-
-              <p>Restaurant
-                <%= link_to "Sign In", new_restaurant_session_path %>/
-                <%= link_to "Sign Up", new_restaurant_registration_path %>
-              </p>
-              <p>Customer
-                <%= link_to "Sign In", new_customer_session_path %>/
-                <%= link_to "Sign Up", new_customer_registration_path %>
-              </p>
-
-            <% end %>
-
-
-            </div>
+          <div class="users flex column justify-between">
+            <%= render 'layouts/user' %>
+          </div>
 
         </div>
 
-      </div>
+      <!-- </div> -->
 
   </div>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-  <div class="content">
+  <div class="content flex column align-center">
     <%= yield %>
   </div>
 

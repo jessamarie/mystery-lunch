@@ -1,23 +1,26 @@
-<h1>Order Results</h1>
-<td><%= @order.created_at %></td>
+<div class="order container flex column">
+  <h1>Order Results</h1>
+  <td><%= @order.created_at %></td>
 
-<table class="flex column">
-  <thead>
-    <!-- <tr>
-      <th></th>
-      <th>Item</th>
-      <th>Restaurant</th>
-    </tr> -->
-  </thead>
-
-<tbody>
-    <% @items.each { |item| %>
-      <tr class="flex row justify-space">
-        <td><%= link_to image_tag(item.menu_item.image_url, class: "image"), restaurant_profile_path(item.menu_item.restaurant_profile)  %></td>
-        <td><%= item.menu_item.name %></td>
-        <td><%= link_to item.menu_item.restaurant_profile.name, restaurant_profile_path(item.menu_item.restaurant_profile) %></td>
+  <table class="flex column">
+    <thead>
+      <tr>
       </tr>
-    <% } %>
-  </tbody>
-</table>
-<hr>
+    </thead>
+
+  <tbody>
+      <% @items.each { |item| %>
+        <tr class="flex row justify-space">
+          <td><%= link_to image_tag(item.menu_item.image_url, class: "image"), restaurant_profile_path(item.menu_item.restaurant_profile)  %></td>
+          <td><%= item.menu_item.name %></td>
+          <td class= "orderitem-description"><%= item.menu_item.description %></td>
+          <td><%= link_to item.menu_item.restaurant_profile.name, restaurant_profile_path(item.menu_item.restaurant_profile) %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <hr>
+
+  <td><%= link_to "Return to Restaurants", restaurant_profiles_path %></td>
+
+</div>
