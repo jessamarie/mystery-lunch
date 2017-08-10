@@ -1,5 +1,6 @@
 class MenuItem < ApplicationRecord
   belongs_to :restaurant_profile
-  has_many :order_items
-  has_many :orders, through: :order_items
+
+  has_many :cart_items
+  validates :name, :description, presence: true
 end
