@@ -1,17 +1,11 @@
-<%= form_with(model: customer_profile, local: true) do |form| %>
-  <% if customer_profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(customer_profile.errors.count, "error") %> prohibited this customer_profile from being saved:</h2>
-
-      <ul>
-      <% customer_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= form_for @customer_profile do |f| %>
+  <%= f.label :firstname %>
+  <%= f.text_field :firstname %>
+  <%= f.label :lastname %>
+  <%= f.text_field :lastname %>
+  <%= f.label :about %>
+  <%= f.text_area :about %>
+  <%= f.label :interests %>
+  <%= f.text_field :interests %>
+  <%= f.submit %>
 <% end %>

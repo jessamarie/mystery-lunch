@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="profile customer-profile">
 
-<%= link_to 'Edit', edit_customer_profile_path(@customer_profile) %> |
-<%= link_to 'Back', customer_profiles_path %>
+    <h3 class="customer-name"> <%= @customer_profile.firstname %> <%= @customer_profile.lastname %></h3>
+    <h4 class="about"> <%= @customer_profile.about %> </h4>
+    <h4 class="interests"> <%= @customer_profile.interests %> </h4>
+
+</div>
+
+<% if current_customer == @customer_profile.customer  %>
+  <%= link_to 'Edit Profile', edit_customer_profile_path(@customer_profile) %> |
+<% end %>
