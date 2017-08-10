@@ -1,5 +1,7 @@
 OrderItem.destroy_all
 Order.destroy_all
+CartItem.destroy_all
+Cart.destroy_all
 MenuItem.destroy_all
 Customer.destroy_all
 Restaurant.destroy_all
@@ -9,64 +11,61 @@ jessa = Customer.create(
   password: "password"
 )
 
-jessas_profile = CustomerProfile.create(
-  firstname: "Jessa",
-  lastname: "B",
-  about: "A red head",
-  interests: "Chimichangas",
-  customer: jessa
-)
-
 plum_blossom = Restaurant.create(
   email: "plum@blossom.com",
-  password: "password"
+  password: "password",
 )
 
 plum_blossom_profile = RestaurantProfile.create(
   name: "Plum Blossom",
   description: "A yummy chinese restaurant",
   address: "75446 plum way",
-  restaurant: plum_blossom
+  restaurant: plum_blossom,
+  profile_pic: "image.jpg"
 )
 
 kung_pao = plum_blossom_profile.menu_items.create(
-  name: "Kung Pao Chicken"
+  name: "Kung Pao Chicken",
+  description: "Chicken with some kung_pao",
+  image_url: "image.jpg"
 )
 
-chao_mein = MenuItem.create(
+chao_mein = plum_blossom_profile.menu_items.create(
    name: "Chao Mein",
-   restaurant_profile: plum_blossom_profile
+   description: "Yummy noodles",
+   image_url: "image.jpg"
 )
-
-jessas_order = Order.create(customer: jessa)
-jessas_order.order_items.create(menu_item: kung_pao, quantity: 1)
-jessas_order.order_items.create(menu_item: chao_mein)
 
 arbys = Restaurant.create(
   email: "arbys@arbys.com",
-  password: "password"
+  password: "password",
 )
 
 arbys_profile = RestaurantProfile.create(
   name: "Arby's",
   description: "fast food restaurant",
   address: "43342 arbys blvd",
-  restaurant: arbys
+  restaurant: arbys,
+  profile_pic: "image.jpg"
 )
 
 roast_beef = arbys_profile.menu_items.create(
-  name: "roast_beef sandwich"
+  name: "roast beef sandwich",
+  description: "Roast beef Ew",
+  image_url: "image.jpg"
 )
 
 chicken_sandwich = arbys_profile.menu_items.create(
-  name: "chicken sandwich"
+  name: "chicken sandwich",
+  description: "Crispy Chicken with Honey Mustard",
+  image_url: "image.jpg"
 )
 
 chocolate_milkshake = arbys_profile.menu_items.create(
-  name: "chocolate_milkshake"
+  name: "chocolate_milkshake",
+  description: "Chocolate Goodness",
+  image_url: "image.jpg"
 )
-
-jessas_order.order_items.create(menu_item: chocolate_milkshake)
 
 dos_amigos = Restaurant.create(
   email: "dos@amigos.com",
@@ -77,12 +76,12 @@ dos_profile = RestaurantProfile.create(
   name: "Dos Amigos",
   description: "A yummy mexicano restaurant",
   address: "75446 nouno amgios",
-  restaurant: dos_amigos
+  restaurant: dos_amigos,
+  profile_pic: "image.jpg"
 )
-
 
 chimichanga = dos_profile.menu_items.create(
-  name: "chimichanga"
+  name: "chimichanga",
+  description: "deep fried burrito",
+  image_url: "image.jpg"
 )
-
-jessas_order.order_items.create(menu_item: chimichanga)

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'restaurant_profiles#index'
+
   # devise_for :restaurants
   devise_for :customers
 
@@ -7,10 +9,12 @@ Rails.application.routes.draw do
       registrations: 'restaurants/registrations'
   }
 
-  root to: 'restaurant_profiles#index'
-
-
   resources :restaurant_profiles do
-    resources :menu_items
+    resources :menu_items, except: [:index, :show]
   end
+
+  resources :cart_items, only: [:create, :update, :destroy]
+  resources :orders, except: [:index]
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 end
