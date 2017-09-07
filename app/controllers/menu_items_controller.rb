@@ -36,6 +36,9 @@ class MenuItemsController < ApplicationController
     end
 
     def menu_item_params
-      params.require(:menu_item).permit(:name)
+      # description and image_url are required fields per your validation
+      # When left out of your form and not permitted here, creating a new
+      # menu_item will fail with a validation error
+      params.require(:menu_item).permit(:name, :description, :image_url)
     end
 end

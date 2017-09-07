@@ -1,5 +1,16 @@
 <%= form_for [@restaurant_profile, @menu_item] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <!--
+    description and image_url are both required via exists validation on the
+    MenuItem model, and so must be represented here or defaulted in a before_save
+    callback inside the MenuItem class
+
+    http://guides.rubyonrails.org/active_record_callbacks.html
+  -->
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
   <%= f.submit %>
 <% end %>

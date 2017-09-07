@@ -17,8 +17,12 @@ class RestaurantProfilesController < ApplicationController
   end
 
   def create
-    @restaurant_profile = RestaurantProfile.create!(restaurant_profile_params)
-    @restaurant_profile.restaurant = current_restaurant
+    # If we merge the restaurant in with our profile params, we can create the
+    # profile in one action
+    @restaurant_profile = RestaurantProfile.create!(restaurant_profile_params.merge({
+      restaurant: current_restaurant
+      }))
+    # @restaurant_profile.restaurant = current_restaurant
     flash[:notice] = "Profile was successfully created."
     redirect_to restaurant_profile_path(@restaurant_profile)
   end

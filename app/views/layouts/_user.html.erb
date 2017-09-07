@@ -1,7 +1,17 @@
 <% if current_restaurant || current_customer %>
 
   <% if current_restaurant %>
+    <!--
+      When a new restauant is created during sign up, this restaurant-user doesn't
+      yet have a `profile` assigned. Generating this profile link fails with
+      "undefined method `name' for nil:NilClass"
+      To handle this edge case, we should be sure to only use `profile` if it exists.
+    -->
+    <% if profile %>
     <%= link_to profile.name, restaurant_profile_path(profile) %>
+    <% else %>
+    <%= "Unnamed Restaurant" %>
+    <% end %>
     <%= link_to "Sign Out", destroy_restaurant_session_path, :method => :delete %>
   <% else %>
     <%= current_customer.email %>

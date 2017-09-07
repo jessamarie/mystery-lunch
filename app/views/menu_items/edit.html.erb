@@ -4,4 +4,8 @@
 
 <%= link_to 'Destroy', [@restaurant_profile, @menu_item], method: :delete, data: { confirm: 'Are you sure you want to destroy this item?' } %>
 
-<%= link_to 'Back', restaurant_profile_menu_items_path(@restaurant_profile) %>
+<!--
+  The prior path: `restaurant_profile_menu_items_path()` doesn't have a route
+  implemented. `restaurant_profile_path()` seems to be more correct
+-->
+<%= link_to 'Back', restaurant_profile_path(@restaurant_profile) %>
